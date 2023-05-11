@@ -31,6 +31,7 @@ namespace financasApi
             services.AddDbContext<DataBaseContext>(options => 
                 options.UseSqlServer(Configuration.GetConnectionString("Producao")));
             services.AddControllers();
+            services.AddCors();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "financasApi", Version = "v1" });
@@ -50,6 +51,7 @@ namespace financasApi
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();
+            app.UseCors(cors => cors.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
