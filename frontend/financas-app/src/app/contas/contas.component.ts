@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-contas',
   templateUrl: './contas.component.html',
-  styleUrls: ['./contas.component.css']
+  styleUrls: ['./contas.component.scss']
 })
 export class ContasComponent implements OnInit {
   public id: number = 0;
@@ -14,12 +14,13 @@ export class ContasComponent implements OnInit {
   constructor(private httpRequest: HttpClient) { }
 
   ngOnInit(): void {
-    this.httpRequest.get(`https://localhost:5001/api/Contas/${1}`).forEach((valor) => {
-      console.log(valor);
-    });
+
   }
 
   public getConta(id: number): void {
+    this.httpRequest.get(`https://localhost:5001/api/Contas/${1}`).forEach((valor) => {
+      console.log(valor);
+    });
   }
 }
 
